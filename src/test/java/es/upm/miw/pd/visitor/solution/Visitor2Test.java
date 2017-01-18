@@ -8,26 +8,28 @@ import java.util.Collection;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.upm.miw.pd.visitor.ElementA;
-import es.upm.miw.pd.visitor.ElementB;
-import es.upm.miw.pd.visitor.Element;
+import es.upm.miw.pd.visitor.figure.Figure;
+import es.upm.miw.pd.visitor.figure.Circle;
+import es.upm.miw.pd.visitor.figure.Square;
+import es.upm.miw.pd.visitor.figure.Triangle;
+import es.upm.miw.pd.visitor.figure.Visitor2;
 
 public class Visitor2Test {
-    private Collection<Element> coleccion = new ArrayList<Element>();
+    private Collection<Figure> coleccion = new ArrayList<Figure>();
 
     @Before
     public void ini() {
-        coleccion.add(new ElementA());
-        coleccion.add(new ElementA());
-        coleccion.add(new ElementB());
-        coleccion.add(new ElementA());
-        coleccion.add(new ElementB());
+        coleccion.add(new Circle(null, 0));
+        coleccion.add(new Circle(null, 0));
+        coleccion.add(new Square(null, 0));
+        coleccion.add(new Circle(null, 0));
+        coleccion.add(new Square(null, 0));
     }
 
     @Test
     public void testVisitorAs() {
         Visitor2 v2 = new Visitor2();
-        for (Element elemento : coleccion) {
+        for (Figure elemento : coleccion) {
             elemento.accept(v2);
         }
         assertEquals(3, v2.getAs());
@@ -36,7 +38,7 @@ public class Visitor2Test {
     @Test
     public void testVisitorBs() {
         Visitor2 v2 = new Visitor2();
-        for (Element elemento : coleccion) {
+        for (Figure elemento : coleccion) {
             elemento.accept(v2);
         }
         assertEquals(2, v2.getBs());
