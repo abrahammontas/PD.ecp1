@@ -25,23 +25,4 @@ public class Visitor2Test {
         coleccion.add(new Circle(null, 0));
         coleccion.add(new Square(null, 0));
     }
-
-    @Test
-    public void testVisitorAs() {
-        Visitor2 v2 = new Visitor2();
-        for (Figure elemento : coleccion) {
-            elemento.accept(v2);
-        }
-        assertEquals(3, v2.getAs());
-    }
-
-    @Test
-    public void testVisitorBs() {
-        Visitor2 v2 = new Visitor2();
-        for (Figure elemento : coleccion) {
-            elemento.accept(v2);
-        }
-        assertEquals(2, v2.getBs());
-    }
-
 }
